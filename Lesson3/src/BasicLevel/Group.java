@@ -4,6 +4,7 @@ import BasicLevel.Exceptions.GroupOverflowException;
 import BasicLevel.Exceptions.StudentNotFoundException;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Group {
     private String groupName;
@@ -33,7 +34,7 @@ public class Group {
         this.students = students;
     }
 
-    public void AddStudent(Student student) throws GroupOverflowException {
+    public void addStudent(Student student) throws GroupOverflowException {
         for(int i = 0; i < students.length; i++) {
             if(students[i] == null) {
                 students[i] = student;
@@ -72,8 +73,13 @@ public class Group {
         return remove;
     }
 
+    public Student[] sortStudents() {
+        Arrays.sort(students, Comparator.nullsLast(new StudentLastNameComparator()));
+        return students;
+    }
+
     @Override
     public String toString() {
-        return "Group{" + "groupName='" + groupName + '\'' + ", students=" + Arrays.toString(students) + '}';
+        return "Group{" + "groupName='" + groupName + '\'' + ", students=" + Arrays.toString(sortStudents()) + '}';
     }
 }
