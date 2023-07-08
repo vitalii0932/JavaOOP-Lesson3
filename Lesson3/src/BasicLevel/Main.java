@@ -36,9 +36,9 @@ public class Main {
         System.out.println(group1.toString());
         System.out.println(group2.toString());
 
-        Student newStudent = new Student("newStudentName", "newStudentLastName", Gender.Female, 10, "group1");
+        Student newStudent = new Student("Anton", "Antonovich", Gender.Female, 10, "group1");
         try {
-            group1.AddStudent(newStudent);
+            group1.addStudent(newStudent);
         } catch (GroupOverflowException e) {
             System.out.println("Group overflow");
         }
@@ -51,7 +51,7 @@ public class Main {
         System.out.println(group1.toString());
 
         try {
-            group1.AddStudent(newStudent);
+            group1.addStudent(newStudent);
             System.out.println(group1.toString());
         } catch (GroupOverflowException e) {
             System.out.println("Group overflow");
